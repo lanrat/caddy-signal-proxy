@@ -6,4 +6,4 @@ This minimal example can be used standalone or combined with a more complex exis
 
 ## Usage
 
-Set your domain in the environment variable `SIGNAL_PROXY_DOMAIN` in `docker-compose.yml` and run `docker compose up`
+Set your domain in the environment variable `SIGNAL_PROXY_DOMAIN` in `docker-compose.yml` and run `docker compose up`.
