@@ -1,0 +1,43 @@
+{
+    servers {
+        listener_wrappers {
+            layer4 {
+                @signal tls sni {$SIGNAL_PROXY_DOMAIN}
+                route @signal {
+                    tls
+                    subroute {
+                        # get hosts from: https://github.com/signalapp/Signal-TLS-Proxy/blob/main/data/nginx-relay/nginx.conf
+                        @signal-proxy {
+                            tls sni \
+                                "chat.signal.org" \
+                                "ud-chat.signal.org" \
+                                "storage.signal.org" \
+                                "cdn.signal.org" \
+                                "cdn2.signal.org" \
+                                "cdn3.signal.org" \
+                                "cdsi.signal.org" \
+                                "sfu.voip.signal.org" \
+                                "svr2.signal.org" \
+                                "updates.signal.org" \
+                                "updates2.signal.org" \
+                                "backend1.svr3.signal.org" \
+                                "backend2.svr3.signal.org" \
+                                "backend3.svr3.signal.org" \
+                                "contentproxy.signal.org"
+                        }
+                        route @signal-proxy {
+                            proxy {l4.tls.server_name}:443
+                        }
+                    }
+                }
+            }
+            tls
+        }
+    }
+}
+
+# you need this block to enable automatic certificates
+{$SIGNAL_PROXY_DOMAIN} {
+    import log
+	abort
+}

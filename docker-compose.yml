@@ -1,0 +1,21 @@
+services:
+  signal-proxy:
+    container_name: signal-proxy
+    image: signal-proxy
+    pull_policy: never
+    build: build/
+    volumes:
+      - caddy_config:/config
+      - caddy_data:/data
+      - ./caddy/:/etc/caddy:ro
+    environment:
+      - SIGNAL_PROXY_DOMAIN=YOUR_DOMAIN_HERE
+    restart: unless-stopped
+    ports:
+      - 80:80/tcp
+      - 443:443/tcp
+      - 443:443/udp
+
+volumes:
+  caddy_config:
+  caddy_data:
