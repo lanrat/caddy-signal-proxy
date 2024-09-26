@@ -39,5 +39,5 @@
 # you need this block to enable automatic certificates
 {$SIGNAL_PROXY_DOMAIN} {
     import log
-	abort
+    abort
 }
