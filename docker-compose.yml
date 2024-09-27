@@ -9,7 +9,7 @@ services:
       - caddy_data:/data
       - ./caddy/:/etc/caddy:ro
     environment:
-      - SIGNAL_PROXY_DOMAIN=YOUR_DOMAIN_HERE
+      - SIGNAL_PROXY_DOMAIN=${SIGNAL_PROXY_DOMAIN:?Signal proxy domain is required}
     restart: unless-stopped
     ports:
       - 80:80/tcp
