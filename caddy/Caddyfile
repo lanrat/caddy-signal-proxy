@@ -6,25 +6,9 @@
                 route @signal {
                     tls
                     subroute {
-                        # get hosts from: https://github.com/signalapp/Signal-TLS-Proxy/blob/main/data/nginx-relay/nginx.conf
-                        # alternativly just use : "*.signal.org" "*.*.signal.org"
                         @signal-proxy {
-                            tls sni \
-                                "chat.signal.org" \
-                                "ud-chat.signal.org" \
-                                "storage.signal.org" \
-                                "cdn.signal.org" \
-                                "cdn2.signal.org" \
-                                "cdn3.signal.org" \
-                                "cdsi.signal.org" \
-                                "sfu.voip.signal.org" \
-                                "svr2.signal.org" \
-                                "updates.signal.org" \
-                                "updates2.signal.org" \
-                                "backend1.svr3.signal.org" \
-                                "backend2.svr3.signal.org" \
-                                "backend3.svr3.signal.org" \
-                                "contentproxy.signal.org"
+                            # alternativly get specific hosts from: https://github.com/signalapp/Signal-TLS-Proxy/blob/main/data/nginx-relay/nginx.conf
+                            tls sni "*.signal.org" "*.*.signal.org"
                         }
                         route @signal-proxy {
                             proxy {l4.tls.server_name}:443
