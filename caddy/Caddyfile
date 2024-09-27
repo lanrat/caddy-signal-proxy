@@ -21,7 +21,7 @@
     }
 }
 
-# you need this block to enable automatic certificates
+# this block is needed to enable automatic certificates
 {$SIGNAL_PROXY_DOMAIN} {
     abort
 }
