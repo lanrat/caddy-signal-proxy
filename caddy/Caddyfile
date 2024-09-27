@@ -7,7 +7,7 @@
                     tls
                     subroute {
                         # get hosts from: https://github.com/signalapp/Signal-TLS-Proxy/blob/main/data/nginx-relay/nginx.conf
-                        # alternativly just use : "*.signal.org", "*.*.signal.org"
+                        # alternativly just use : "*.signal.org" "*.*.signal.org"
                         @signal-proxy {
                             tls sni \
                                 "chat.signal.org" \
